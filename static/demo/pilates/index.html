@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>온결 필라테스 · 포트폴리오 데모</title>
+<meta name="description" content="1:1 체형 교정 필라테스 스튜디오 랜딩페이지 (포트폴리오용 가상 업체 데모)">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#fbf8f4; --surface:#ffffff; --ink:#1f1d1a; --muted:#6b645c; --line:#e9e2d8;
+  --accent:#8a6f55; --accent-ink:#ffffff; --soft:#f1e9df; --sage:#dfe6dc; --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.demo-bar{background:var(--ink);color:#fff;font-size:13px;text-align:center;padding:8px 16px}
+header{position:sticky;top:0;z-index:20;background:rgba(251,248,244,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:15px;color:var(--muted)}
+.nav ul a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 26px;font-weight:700;font-size:16px;border:0;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 8px 24px rgba(138,111,85,.28)}
+.btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn-sm{padding:10px 18px;font-size:14px}
+
+/* hero */
+.hero{padding-top:88px;padding-bottom:72px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.eyebrow{display:inline-block;background:var(--soft);color:var(--accent);font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px;margin-bottom:20px}
+h1{font-size:clamp(34px,5vw,56px);line-height:1.2;letter-spacing:-.03em;font-weight:800}
+h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{margin:22px 0 32px;font-size:18px;color:var(--muted);max-width:30em}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:32px;margin-top:40px}
+.hero-stats b{display:block;font-size:26px;letter-spacing:-.02em}
+.hero-stats span{font-size:13px;color:var(--muted)}
+.hero-visual{position:relative;aspect-ratio:4/5;border-radius:32px;overflow:hidden;background:
+  radial-gradient(120% 80% at 20% 10%,#efe2d2 0%,transparent 60%),
+  radial-gradient(90% 70% at 90% 90%,#d9e3d5 0%,transparent 60%),#f5eee6}
+.hero-visual svg{position:absolute;inset:0;width:100%;height:100%}
+.float-card{position:absolute;left:-8px;bottom:28px;background:var(--surface);border-radius:16px;padding:14px 18px;box-shadow:0 12px 32px rgba(31,29,26,.12);font-size:14px}
+.float-card b{display:block;font-size:15px}
+.float-card small{color:var(--muted)}
+
+section{padding:88px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 48px}
+.sec-head .eyebrow{margin-bottom:14px}
+h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-.03em;line-height:1.3}
+.sec-head p{color:var(--muted);margin-top:12px;font-size:17px}
+
+/* pain */
+.pain{background:var(--surface)}
+.pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pain-item{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.pain-item .ic{width:40px;height:40px;border-radius:12px;background:var(--soft);display:grid;place-items:center;margin-bottom:14px;color:var(--accent);font-weight:800}
+.pain-item p{font-weight:600}
+
+/* programs */
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prog{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:32px 28px;display:flex;flex-direction:column}
+.prog .tag{font-size:13px;color:var(--accent);font-weight:700}
+.prog h3{font-size:22px;margin:8px 0 10px;letter-spacing:-.02em}
+.prog p{color:var(--muted);font-size:15px;flex:1}
+.prog ul{list-style:none;margin-top:18px;font-size:14px;display:grid;gap:8px}
+.prog li::before{content:"✓";color:var(--accent);font-weight:800;margin-right:8px}
+
+/* process */
+.process{background:var(--sage)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.step{background:rgba(255,255,255,.7);border-radius:var(--radius);padding:26px}
+.step::before{counter-increment:s;content:"0" counter(s);display:block;font-weight:800;font-size:28px;color:var(--accent);margin-bottom:8px}
+.step h4{font-size:17px;margin-bottom:6px}
+.step p{font-size:14px;color:var(--muted)}
+
+/* pricing */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:32px 28px;position:relative}
+.plan.best{border:2px solid var(--accent);box-shadow:0 16px 40px rgba(138,111,85,.14)}
+.plan .badge{position:absolute;top:-13px;left:28px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px}
+.plan h3{font-size:18px}
+.plan .price{font-size:34px;font-weight:800;letter-spacing:-.03em;margin:10px 0 2px}
+.plan .price small{font-size:15px;color:var(--muted);font-weight:500}
+.plan .per{font-size:13px;color:var(--muted)}
+.plan ul{list-style:none;margin:22px 0 26px;display:grid;gap:10px;font-size:15px}
+.plan li::before{content:"·";color:var(--accent);font-weight:900;margin-right:8px}
+.plan .btn{width:100%}
+
+/* reviews */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.rev .stars{color:#c9974f;letter-spacing:2px}
+.rev p{margin:12px 0 16px;font-size:15px}
+.rev small{color:var(--muted)}
+.sample-note{text-align:center;font-size:13px;color:var(--muted);margin-top:18px}
+
+/* faq */
+.faq{max-width:760px;margin:0 auto}
+details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:12px;font-size:15px}
+
+/* contact */
+.contact{background:var(--ink);color:#fff;border-radius:32px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.contact h2{color:#fff}
+.contact p{color:#bdb5ab;margin-top:14px}
+form{display:grid;gap:12px}
+input,select,textarea{width:100%;font:inherit;padding:14px 16px;border-radius:12px;border:1px solid #3a3631;background:#2a2723;color:#fff}
+input::placeholder,textarea::placeholder{color:#8f877d}
+label.agree{display:flex;gap:8px;align-items:center;font-size:13px;color:#bdb5ab}
+label.agree input{width:auto}
+footer{padding:48px 0 110px;color:var(--muted);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.mobile-cta{display:none}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:14px 22px;border-radius:14px;font-size:15px;transition:transform .3s;z-index:50}
+.toast.show{transform:translate(-50%,0)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .nav ul{display:none}
+  .hero{grid-template-columns:1fr;padding-top:48px;padding-bottom:56px;gap:36px}
+  .hero-visual{aspect-ratio:4/3}
+  .pain-grid,.steps{grid-template-columns:1fr 1fr}
+  .prog-grid,.price-grid,.rev-grid{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr;padding:36px 24px;border-radius:24px}
+  section{padding:64px 0}
+  .mobile-cta{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:30}
+  .mobile-cta .btn{flex:1}
+  header .btn{display:none}
+}
+@media (max-width:480px){
+  .pain-grid,.steps{grid-template-columns:1fr}
+  .hero-stats{gap:20px}
+}
+</style>
+</head>
+<body>
+<div class="demo-bar">포트폴리오용 데모 페이지입니다 · 가상의 업체이며 실제 운영하지 않습니다</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">온결<span>.</span> 필라테스</a>
+    <ul>
+      <li><a href="#program">프로그램</a></li>
+      <li><a href="#process">진행 방식</a></li>
+      <li><a href="#price">수강료</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary btn-sm">무료 체형 분석 예약</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow">1:1 체형 교정 전문 스튜디오</span>
+      <h1>굽은 어깨, 틀어진 골반<br><em>8주면 달라집니다</em></h1>
+      <p class="lead">자세 분석부터 맞춤 프로그램까지, 한 명의 강사가 끝까지 책임지는 1:1 필라테스. 첫 방문 체형 분석은 무료입니다.</p>
+      <div class="ctas">
+        <a href="#contact" class="btn btn-primary">무료 체형 분석 받기 →</a>
+        <a href="#program" class="btn btn-ghost">프로그램 보기</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>1:1</b><span>전담 강사제</span></div>
+        <div><b>50분</b><span>회당 수업</span></div>
+        <div><b>8주</b><span>교정 집중 과정</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+        <circle cx="300" cy="120" r="70" fill="#e8d6c1" opacity=".8"/>
+        <path d="M-20 400 Q 120 300 220 360 T 440 330 L 440 520 L -20 520 Z" fill="#cfdac9"/>
+        <path d="M-20 440 Q 140 380 260 420 T 440 400 L 440 520 L -20 520 Z" fill="#b9c8b3"/>
+        <path d="M90 400 L90 250 A110 110 0 0 1 310 250 L310 400 Z" fill="#fbf8f4" opacity=".9"/>
+        <path d="M120 400 L120 255 A80 80 0 0 1 280 255 L280 400" fill="none" stroke="#8a6f55" stroke-width="3" opacity=".5"/>
+        <circle cx="200" cy="300" r="46" fill="#8a6f55" opacity=".85"/>
+        <rect x="60" y="398" width="280" height="6" rx="3" fill="#8a6f55" opacity=".45"/>
+        <g stroke="#8a6f55" stroke-width="2" opacity=".35"><path d="M40 90 h60"/><path d="M40 104 h36"/></g>
+      </svg>
+      <div class="float-card"><b>이번 주 체험 가능 시간</b><small>평일 저녁 · 주말 오전 잔여 3타임</small></div>
+    </div>
+  </div>
+
+  <section class="pain">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">이런 분께 추천해요</span>
+        <h2>하나라도 해당된다면<br>지금 몸이 신호를 보내는 중입니다</h2>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-item reveal"><div class="ic">01</div><p>하루 8시간 이상 앉아서 일해요</p></div>
+        <div class="pain-item reveal"><div class="ic">02</div><p>거북목·라운드숄더가 신경 쓰여요</p></div>
+        <div class="pain-item reveal"><div class="ic">03</div><p>운동을 해도 허리가 자주 아파요</p></div>
+        <div class="pain-item reveal"><div class="ic">04</div><p>출산 후 몸이 예전 같지 않아요</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="program">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">프로그램</span>
+        <h2>목표에 맞춰 설계하는 3가지 과정</h2>
+        <p>모든 과정은 첫 체형 분석 결과를 바탕으로 개인별 커리큘럼이 만들어집니다.</p>
+      </div>
+      <div class="prog-grid">
+        <article class="prog reveal">
+          <span class="tag">CORRECTION</span>
+          <h3>체형 교정</h3>
+          <p>거북목, 라운드숄더, 골반 불균형 등 틀어진 정렬을 바로잡는 과정입니다.</p>
+          <ul><li>3D 자세 분석 리포트</li><li>주 2회 권장</li><li>홈 스트레칭 가이드</li></ul>
+        </article>
+        <article class="prog reveal">
+          <span class="tag">REHAB</span>
+          <h3>통증 재활</h3>
+          <p>허리·목·무릎 통증으로 운동이 두려웠던 분을 위한 저강도 맞춤 수업입니다.</p>
+          <ul><li>통증 부위 집중 케어</li><li>기구 필라테스 중심</li><li>단계별 강도 조절</li></ul>
+        </article>
+        <article class="prog reveal">
+          <span class="tag">POSTNATAL</span>
+          <h3>산후 회복</h3>
+          <p>코어와 골반저근을 회복하고, 출산 전 컨디션으로 돌아가는 과정입니다.</p>
+          <ul><li>골반저근 트레이닝</li><li>복직근 이개 체크</li><li>아이 동반 상담 가능</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="process">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">진행 방식</span>
+        <h2>상담부터 변화 확인까지</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><h4>무료 체형 분석</h4><p>자세 사진 촬영과 움직임 테스트로 현재 상태를 확인합니다.</p></div>
+        <div class="step reveal"><h4>맞춤 커리큘럼</h4><p>분석 결과를 바탕으로 8주 목표와 수업 계획을 세웁니다.</p></div>
+        <div class="step reveal"><h4>1:1 전담 수업</h4><p>한 명의 강사가 매 수업 기록을 남기며 진행합니다.</p></div>
+        <div class="step reveal"><h4>변화 리포트</h4><p>4주·8주 차에 비포/애프터 분석을 다시 진행합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="price">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">수강료</span>
+        <h2>부담 없이 시작하세요</h2>
+        <p>모든 수강권에 체형 분석 리포트가 포함됩니다.</p>
+      </div>
+      <div class="price-grid">
+        <div class="plan reveal">
+          <h3>체험 1회</h3>
+          <div class="price">30,000<small>원</small></div>
+          <div class="per">첫 방문 1회 한정</div>
+          <ul><li>체형 분석 + 50분 수업</li><li>맞춤 프로그램 제안</li></ul>
+          <a href="#contact" class="btn btn-ghost">체험 신청</a>
+        </div>
+        <div class="plan best reveal">
+          <span class="badge">가장 많이 선택</span>
+          <h3>8주 교정 집중</h3>
+          <div class="price">880,000<small>원</small></div>
+          <div class="per">16회 · 회당 55,000원</div>
+          <ul><li>주 2회 1:1 수업</li><li>4주·8주 변화 리포트</li><li>홈 트레이닝 영상 제공</li></ul>
+          <a href="#contact" class="btn btn-primary">상담 예약</a>
+        </div>
+        <div class="plan reveal">
+          <h3>자유 10회</h3>
+          <div class="price">650,000<small>원</small></div>
+          <div class="per">유효기간 3개월</div>
+          <ul><li>원하는 요일·시간 예약</li><li>체형 분석 1회 포함</li></ul>
+          <a href="#contact" class="btn btn-ghost">상담 예약</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pain">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">수강 후기</span>
+        <h2>먼저 경험한 회원님들의 이야기</h2>
+      </div>
+      <div class="rev-grid">
+        <div class="rev reveal"><div class="stars">★★★★★</div><p>“목 통증 때문에 시작했는데 한 달쯤 지나니 오후에 두통이 사라졌어요.”</p><small>30대 · 사무직 · 체형 교정</small></div>
+        <div class="rev reveal"><div class="stars">★★★★★</div><p>“매 수업 기록을 보여주셔서 제가 좋아지는 게 눈에 보였어요.”</p><small>40대 · 통증 재활</small></div>
+        <div class="rev reveal"><div class="stars">★★★★★</div><p>“아이 데리고 상담 가도 편하게 맞아주셔서 부담이 없었어요.”</p><small>30대 · 산후 회복</small></div>
+      </div>
+      <p class="sample-note">※ 데모용 예시 문구입니다</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>자주 묻는 질문</h2>
+      </div>
+      <div class="faq">
+        <details><summary>운동을 전혀 안 해봤는데 괜찮을까요?</summary><p>대부분의 회원님이 운동 초보로 시작하십니다. 체형 분석 후 현재 체력에 맞는 강도로 시작해요.</p></details>
+        <details><summary>수업 예약과 변경은 어떻게 하나요?</summary><p>카카오톡 채널로 예약하며, 수업 24시간 전까지 무료로 변경할 수 있습니다.</p></details>
+        <details><summary>주차가 가능한가요?</summary><p>건물 지하 주차장을 수업 시간 동안 2시간 무료로 이용하실 수 있습니다.</p></details>
+        <details><summary>환불 규정이 궁금해요.</summary><p>관련 법령에 따라 잔여 횟수 기준으로 환불해 드립니다. 자세한 내용은 상담 시 안내드려요.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact reveal">
+        <div>
+          <span class="eyebrow">무료 체형 분석</span>
+          <h2>내 몸 상태부터<br>확인해 보세요</h2>
+          <p>남겨주신 연락처로 영업일 기준 하루 안에 연락드립니다. 체형 분석은 약 30분 소요되며 비용이 들지 않습니다.</p>
+        </div>
+        <form id="form">
+          <input required name="name" placeholder="이름">
+          <input required name="phone" type="tel" placeholder="연락처 (010-0000-0000)">
+          <select name="program"><option>관심 프로그램 선택</option><option>체형 교정</option><option>통증 재활</option><option>산후 회복</option></select>
+          <textarea name="memo" rows="3" placeholder="불편한 부위나 희망 시간대를 알려주세요 (선택)"></textarea>
+          <label class="agree"><input type="checkbox" required> 개인정보 수집·이용에 동의합니다</label>
+          <button class="btn btn-primary" type="submit">상담 신청하기</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <div><b>온결 필라테스</b> (가상 업체)<br>서울시 OO구 OO로 00, 3층 · 평일 07:00–22:00 · 주말 09:00–15:00</div>
+    <div>© 포트폴리오 데모 · 실제 운영 업체가 아닙니다</div>
+  </div>
+</footer>
+
+<div class="mobile-cta"><a href="#contact" class="btn btn-primary">무료 체형 분석 예약하기</a></div>
+<div class="toast" id="toast">데모 페이지라 실제로 전송되지는 않아요 🙂</div>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>location.search.includes('static')?el.classList.add('in'):io.observe(el));
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);e.target.reset();
+});
+</script>
+</body>
+</html>

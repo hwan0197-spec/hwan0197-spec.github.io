@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hwan0197-spec.github.io/sitemap.xml
