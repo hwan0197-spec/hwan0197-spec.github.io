@@ -159,7 +159,7 @@ for (const [slug, [title, body]] of Object.entries(pages)) {
 write('404.html', layout({ title: '페이지를 찾을 수 없어요', description: SITE.description, canonical: `${SITE.url}/404.html`, body: `<section class="hero"><h1>페이지를 찾을 수 없어요</h1><p><a href="/">글 목록으로 돌아가기</a></p></section>` }));
 
 // ── sitemap, robots, rss
-const urls = [`${SITE.url}/`, ...posts.map(p => `${SITE.url}/posts/${p.slug}/`), `${SITE.url}/about/`, `${SITE.url}/demo/pilates/`];
+const urls = [`${SITE.url}/`, ...posts.map(p => `${SITE.url}/posts/${p.slug}/`), `${SITE.url}/about/`];
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `<url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
 write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n`);
 const rfc822 = d => new Date(`${d}T09:00:00+09:00`).toUTCString();

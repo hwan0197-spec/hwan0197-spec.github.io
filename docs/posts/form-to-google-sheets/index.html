@@ -188,9 +188,9 @@ Apps Script는 코드를 저장만 해서는 배포된 웹 앱에 반영되지 �
 </ul>
 <h2 id="신청이-오면-메일로-알림-받기-선택">신청이 오면 메일로 알림 받기 (선택)</h2>
 <p>2단계 코드에서 <code>sheet.appendRow(row);</code> 바로 아래에 다음 한 줄을 추가하세요.</p>
-<pre><code class="language-js">    MailApp.sendEmail(Session.getEffectiveUser().getEmail(), &#39;새 상담 신청&#39;, row.join(&#39;\n&#39;));
+<pre><code class="language-js">    MailApp.sendEmail(&#39;내메일@example.com&#39;, &#39;새 상담 신청&#39;, row.join(&#39;\n&#39;));
 </code></pre>
-<p>신청이 들어올 때마다 내 구글 계정 메일로 내용이 옵니다. 추가한 뒤에는 <strong>새 버전으로 다시 배포</strong>하고, 메일 발송 권한도 한 번 더 승인해야 합니다. 무료 계정은 하루에 보낼 수 있는 메일 수에 한도가 있지만, 상담 신청 알림 정도로는 충분합니다.</p>
+<p><code>내메일@example.com</code>을 알림 받을 메일 주소로 바꾸세요. 신청이 들어올 때마다 그 주소로 내용이 옵니다. 추가한 뒤에는 <strong>새 버전으로 다시 배포</strong>하고, 메일 발송 권한도 한 번 더 승인해야 합니다. 무료 계정은 하루에 보낼 수 있는 메일 수에 한도가 있지만, 상담 신청 알림 정도로는 충분합니다.</p>
 <h2 id="개인정보-관리도-챙기세요">개인정보 관리도 챙기세요</h2>
 <p>신청 폼으로 이름과 연락처를 받는 순간 개인정보를 다루게 됩니다.</p>
 <ul>
