@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>홈페이지에 카카오톡 상담 버튼 다는 법 (복사해서 쓰는 코드 포함) | 작은가게 웹 가이드</title>
+<meta name="description" content="카카오톡 채널 채팅 주소를 찾는 곳부터 버튼 HTML·CSS, 휴대폰 하단 고정 버튼, 버튼을 달기 전에 꼭 켜야 하는 설정까지 정리했습니다.">
+<link rel="canonical" href="https://hwan0197-spec.github.io/posts/kakao-channel-button/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="홈페이지에 카카오톡 상담 버튼 다는 법 (복사해서 쓰는 코드 포함)">
+<meta property="og:description" content="카카오톡 채널 채팅 주소를 찾는 곳부터 버튼 HTML·CSS, 휴대폰 하단 고정 버튼, 버튼을 달기 전에 꼭 켜야 하는 설정까지 정리했습니다.">
+<meta property="og:url" content="https://hwan0197-spec.github.io/posts/kakao-channel-button/">
+<meta property="og:site_name" content="작은가게 웹 가이드">
+<meta property="og:locale" content="ko_KR">
+<meta name="google-site-verification" content="wZaLj_VsEKPHZphGS7Xo48Ho-4D0jX2NqfaCgEIiJbo">
+<meta name="naver-site-verification" content="7759fb7f9fcf2142e7113ee5398f6b665ece1880">
+
+<link rel="alternate" type="application/rss+xml" title="작은가게 웹 가이드" href="https://hwan0197-spec.github.io/feed.xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"홈페이지에 카카오톡 상담 버튼 다는 법 (복사해서 쓰는 코드 포함)","description":"카카오톡 채널 채팅 주소를 찾는 곳부터 버튼 HTML·CSS, 휴대폰 하단 고정 버튼, 버튼을 달기 전에 꼭 켜야 하는 설정까지 정리했습니다.","datePublished":"2026-10-01","dateModified":"2026-10-01","mainEntityOfPage":"https://hwan0197-spec.github.io/posts/kakao-channel-button/","publisher":{"@type":"Organization","name":"작은가게 웹 가이드"}}</script>
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="/">작은가게 <b>웹 가이드</b></a>
+  <nav><a href="/">글 목록</a><a href="/about/">소개</a></nav>
+</div></header>
+<main class="wrap">
+<article class="post">
+  <p class="meta">기획 · 2026년 10월 1일 · 6분 읽기</p>
+  <h1>홈페이지에 카카오톡 상담 버튼 다는 법 (복사해서 쓰는 코드 포함)</h1>
+  <p class="lede">카카오톡 채널 채팅 주소를 찾는 곳부터 버튼 HTML·CSS, 휴대폰 하단 고정 버튼, 버튼을 달기 전에 꼭 켜야 하는 설정까지 정리했습니다.</p>
+  <nav class="toc"><p>목차</p><ol><li><a href="#1단계-채널-주소-확인하기">1단계: 채널 주소 확인하기</a></li><li><a href="#2단계-버튼-넣기-기본형">2단계: 버튼 넣기 (기본형)</a></li><li><a href="#3단계-휴대폰-하단-고정-버튼-만들기">3단계: 휴대폰 하단 고정 버튼 만들기</a></li><li><a href="#버튼-달기-전에-꼭-켜야-하는-설정">버튼 달기 전에 꼭 켜야 하는 설정</a></li><li><a href="#자주-하는-실수">자주 하는 실수</a></li><li><a href="#카카오톡-상담과-신청-폼-둘-다-필요할까">카카오톡 상담과 신청 폼, 둘 다 필요할까?</a></li><li><a href="#정리">정리</a></li></ol></nav>
+  <div class="content"><p>전화는 부담스럽고 폼은 귀찮은 손님도 <strong>카카오톡 상담</strong>은 편하게 누릅니다. 이미 카카오톡 채널을 운영하고 있다면, 홈페이지나 랜딩페이지에 버튼 하나만 추가하면 됩니다. 별도 프로그램이나 서버는 필요 없어요.</p>
+<p>완성하면 이렇게 동작합니다.</p>
+<ol>
+<li>방문자가 페이지에서 &quot;카카오톡으로 상담하기&quot; 버튼을 누름</li>
+<li>내 카카오톡 채널의 1:1 채팅방이 열림</li>
+<li>운영자는 카카오톡 채널 관리자센터의 1:1 채팅에서 답장</li>
+</ol>
+<blockquote>
+<p>준비물: 카카오톡 채널 하나, 버튼을 넣을 HTML 페이지. 채널을 아직 만들지 않았다면 <a href="https://kakaobusiness.gitbook.io/main/channel/start" target="_blank" rel="noopener">카카오 비즈니스 가이드의 채널 만들기</a>부터 보세요.</p>
+</blockquote>
+<h2 id="1단계-채널-주소-확인하기">1단계: 채널 주소 확인하기</h2>
+<p>버튼에 넣을 주소는 **카카오톡 채널 관리자센터(파트너센터)**에서 확인합니다.</p>
+<ul>
+<li>카카오 공식 문서 기준으로 **[채널] → [채널 정보] → [채널 URL]**에서 채널 URL을 볼 수 있습니다.</li>
+<li>채널 URL은 <code>https://pf.kakao.com/_ZeUTxl</code>처럼 생겼고, 뒤쪽 <code>_ZeUTxl</code> 부분이 채널마다 다른 <strong>프로필 ID</strong>입니다. (<a href="https://developers.kakao.com/docs/ko/kakaotalk-channel/common" target="_blank" rel="noopener">카카오 디벨로퍼스 문서</a>)</li>
+<li>같은 화면에서 <strong>채팅방으로 바로 가는 URL</strong>도 함께 보여줍니다. (<a href="https://kakaobusiness.gitbook.io/main/channel/run/mychannel" target="_blank" rel="noopener">카카오 비즈니스 가이드</a>)</li>
+</ul>
+<p>주소가 두 종류라는 점이 중요합니다.</p>
+<table>
+<thead>
+<tr>
+<th>주소</th>
+<th>누르면</th>
+<th>어디에 쓰나</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>채널 URL</td>
+<td>채널 홈(소개 화면)이 열림</td>
+<td>채널 친구 추가를 유도할 때</td>
+</tr>
+<tr>
+<td>채팅 URL</td>
+<td>1:1 채팅방이 바로 열림</td>
+<td><strong>상담 버튼</strong></td>
+</tr>
+</tbody></table>
+<p>상담 버튼에는 <strong>채팅 URL</strong>을 쓰세요. 채널 홈으로 보내면 손님이 거기서 채팅 버튼을 한 번 더 찾아 눌러야 합니다. 채팅 URL은 보통 채널 URL 끝에 <code>/chat</code>이 붙은 모양(<code>https://pf.kakao.com/_채널ID/chat</code>)으로 보이지만, 직접 만들어 쓰기보다 <strong>관리자센터에 표시된 주소를 그대로 복사</strong>하는 편이 안전합니다.</p>
+<h2 id="2단계-버튼-넣기-기본형">2단계: 버튼 넣기 (기본형)</h2>
+<p>아래 코드를 버튼이 들어갈 위치에 붙여넣고, <code>여기에_채팅_URL</code> 부분만 1단계에서 복사한 주소로 바꾸세요.</p>
+<pre><code class="language-html">&lt;a class=&quot;kakao-btn&quot; href=&quot;여기에_채팅_URL&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+  카카오톡으로 상담하기
+&lt;/a&gt;
+
+&lt;style&gt;
+  .kakao-btn {
+    display: inline-block;
+    padding: 14px 24px;
+    border-radius: 12px;
+    background: #FEE500; /* 노란 계열 예시 색상, 원하는 색으로 바꿔도 됩니다 */
+    color: #191919;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  .kakao-btn:hover { filter: brightness(0.95); }
+&lt;/style&gt;
+</code></pre>
+<ul>
+<li><code>target=&quot;_blank&quot;</code>는 새 탭으로 열어서, 상담 후에도 내 페이지가 그대로 남아 있게 해줍니다.</li>
+<li>버튼 문구는 &quot;문의하기&quot;보다 **&quot;카카오톡으로 상담하기&quot;**처럼 누르면 무슨 일이 생기는지 알 수 있게 쓰세요.</li>
+</ul>
+<h2 id="3단계-휴대폰-하단-고정-버튼-만들기">3단계: 휴대폰 하단 고정 버튼 만들기</h2>
+<p>광고로 들어오는 손님은 대부분 휴대폰으로 봅니다. 스크롤을 어디까지 내리든 화면 아래에 버튼이 붙어 있으면 누르기가 훨씬 쉬워요. 아래 코드는 <strong>휴대폰 화면에서만</strong> 하단에 고정되고, PC에서는 숨겨집니다.</p>
+<pre><code class="language-html">&lt;a class=&quot;kakao-fixed&quot; href=&quot;여기에_채팅_URL&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+  카카오톡으로 상담하기
+&lt;/a&gt;
+
+&lt;style&gt;
+  .kakao-fixed { display: none; }
+
+  @media (max-width: 767px) {
+    .kakao-fixed {
+      display: block;
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      z-index: 100;
+      padding: 16px;
+      border-radius: 12px;
+      background: #FEE500;
+      color: #191919;
+      font-weight: 700;
+      font-size: 17px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    /* 고정 버튼이 페이지 맨 아래 내용을 가리지 않도록 여백 확보 */
+    body { padding-bottom: 96px; }
+  }
+&lt;/style&gt;
+</code></pre>
+<ul>
+<li><code>env(safe-area-inset-bottom)</code>은 아이폰 하단의 홈 바 영역을 피해 버튼을 조금 올려줍니다.</li>
+<li><code>body</code>에 아래 여백을 준 이유는, 여백이 없으면 페이지 맨 아래의 연락처나 사업자 정보가 버튼에 가려지기 때문이에요.</li>
+</ul>
+<h2 id="버튼-달기-전에-꼭-켜야-하는-설정">버튼 달기 전에 꼭 켜야 하는 설정</h2>
+<p>버튼이 잘 눌려도 채널 설정이 꺼져 있으면 손님이 상담을 시작할 수 없습니다. <a href="https://kakaobusiness.gitbook.io/main/channel/run/mychannel" target="_blank" rel="noopener">카카오 비즈니스 가이드</a> 기준으로 아래를 확인하세요.</p>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>1:1 채팅이 &#39;사용함&#39;인가요?</strong> 관리자센터의 1:1 채팅 메뉴에서 켜고, 채팅 가능 요일과 시간을 설정합니다. (<a href="https://kakaobusiness.gitbook.io/main/partner/smb/channel/step2/chat1" target="_blank" rel="noopener">1:1 채팅 활성화 안내</a>)</li>
+<li><input disabled="" type="checkbox"> <strong>채널 공개가 켜져 있나요?</strong> 공개를 끄면 사용자가 채널 홈에 들어갈 수 없고 친구로 추가할 수도 없습니다.</li>
+<li><input disabled="" type="checkbox"> <strong>검색 허용은 선택 사항입니다.</strong> 검색을 꺼도 카카오톡 검색 결과에서만 빠지고, URL로는 들어올 수 있습니다.</li>
+</ul>
+<h2 id="자주-하는-실수">자주 하는 실수</h2>
+<ol>
+<li><strong>채널 홈 주소를 넣음</strong>: 상담 버튼인데 채널 소개 화면이 열리면 한 단계가 늘어납니다. 채팅 URL인지 다시 확인하세요.</li>
+<li><strong>버튼이 너무 많음</strong>: &quot;전화하기&quot;, &quot;카톡 상담&quot;, &quot;상담 신청 폼&quot;이 한 화면에 나란히 있으면 오히려 아무것도 안 누르기 쉽습니다. <a href="/posts/landing-page-structure/">랜딩페이지 구성 순서</a>에서 말한 것처럼 <strong>가장 원하는 행동 하나</strong>를 정하고, 카카오톡 버튼은 그 주인공이거나 보조 역할 중 하나로만 두세요.</li>
+<li><strong>응답 시간 안내가 없음</strong>: 밤에 문의가 오면 다음 날 답하게 됩니다. 버튼 근처에 &quot;평일 10시~19시 답변&quot;처럼 적어두면 손님이 기다려 줍니다.</li>
+<li><strong>본인 휴대폰으로 안 눌러봄</strong>: 완성 후 반드시 휴대폰 카카오톡이 설치된 상태에서 직접 눌러 보고, 채팅방이 열리는지 확인하세요.</li>
+</ol>
+<h2 id="카카오톡-상담과-신청-폼-둘-다-필요할까">카카오톡 상담과 신청 폼, 둘 다 필요할까?</h2>
+<p>둘은 역할이 다릅니다.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>카카오톡 상담</th>
+<th>신청 폼</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>손님 입장</td>
+<td>가볍게 물어보기 좋음</td>
+<td>정식으로 신청하는 느낌</td>
+</tr>
+<tr>
+<td>운영자 입장</td>
+<td>실시간 응대 부담이 있음</td>
+<td>신청 내용이 한곳에 정리됨</td>
+</tr>
+<tr>
+<td>잘 맞는 업종</td>
+<td>가격·일정 문의가 잦은 곳</td>
+<td>방문 상담·견적이 필요한 곳</td>
+</tr>
+</tbody></table>
+<p>응대할 여유가 많지 않다면 폼을 주인공으로, 카카오톡을 &quot;간단 문의&quot; 보조 버튼으로 두는 구성이 무난합니다. 폼 만드는 법은 <a href="/posts/form-to-google-sheets/">상담 신청 폼을 구글 시트로 받는 법</a>에 정리해 두었어요.</p>
+<h2 id="정리">정리</h2>
+<ul>
+<li>상담 버튼에는 채널 홈 주소가 아니라 <strong>채팅 URL</strong>을 넣으세요. 관리자센터 채널 정보 화면에서 그대로 복사하는 것이 가장 안전합니다.</li>
+<li>휴대폰에서는 <strong>하단 고정 버튼</strong>이 효과적이고, 아래 내용을 가리지 않게 여백을 꼭 주세요.</li>
+<li>버튼을 달기 전에 <strong>1:1 채팅 사용함, 채팅 가능 시간, 채널 공개</strong>를 확인하세요.</li>
+</ul>
+</div>
+  
+</article>
+<section class="related"><h2>함께 보면 좋은 글</h2><a class="card" href="/posts/builder-vs-custom-cost/"><span>비용</span><b>홈페이지 빌더 vs 직접 제작, 1년 유지비 비교 (아임웹·윅스·무료 호스팅)</b></a><a class="card" href="/posts/cloudflare-pages-domain/"><span>자동화</span><b>랜딩페이지를 무료로 올리고 내 도메인 연결하기 (Cloudflare Pages)</b></a><a class="card" href="/posts/ga4-meta-pixel-basics/"><span>마케팅</span><b>광고 전에 꼭 설치할 GA4와 메타 픽셀 기초 (상담 신청 전환까지)</b></a></section></main>
+<footer class="site-footer"><div class="wrap">
+  <p>© 2026 작은가게 웹 가이드 · <a href="/about/">소개</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/feed.xml">RSS</a></p>
+</div></footer>
+</body>
+</html>

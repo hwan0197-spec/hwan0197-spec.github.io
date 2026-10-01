@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://hwan0197-spec.github.io/</loc></url>
+<url><loc>https://hwan0197-spec.github.io/posts/builder-vs-custom-cost/</loc></url>
+<url><loc>https://hwan0197-spec.github.io/posts/cloudflare-pages-domain/</loc></url>
+<url><loc>https://hwan0197-spec.github.io/posts/ga4-meta-pixel-basics/</loc></url>
+<url><loc>https://hwan0197-spec.github.io/posts/kakao-channel-button/</loc></url>
 <url><loc>https://hwan0197-spec.github.io/posts/form-to-google-sheets/</loc></url>
 <url><loc>https://hwan0197-spec.github.io/posts/landing-page-cost/</loc></url>
 <url><loc>https://hwan0197-spec.github.io/posts/landing-page-structure/</loc></url>
