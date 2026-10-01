@@ -13,8 +13,8 @@ const SITE = {
   // 크몽 서비스가 승인되면 주소를 넣으세요. 비어 있으면 글 하단 안내 박스가 숨겨집니다.
   kmongUrl: '',
   // 검색엔진 소유 확인용 (서치콘솔·서치어드바이저에서 받은 content 값)
-  googleVerification: '',
-  naverVerification: '',
+  googleVerification: 'wZaLj_VsEKPHZphGS7Xo48Ho-4D0jX2NqfaCgEIiJbo',
+  naverVerification: '7759fb7f9fcf2142e7113ee5398f6b665ece1880',
   // 애드센스 승인 후 게시자 ID (예: ca-pub-0000000000000000)
   adsenseClient: '',
 };
