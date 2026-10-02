@@ -57,6 +57,10 @@ function layout({ title, description, canonical, body, type = 'website', extraHe
 <meta property="og:url" content="${canonical}">
 <meta property="og:site_name" content="${esc(SITE.title)}">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="${SITE.url}/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 ${SITE.googleVerification ? `<meta name="google-site-verification" content="${SITE.googleVerification}">` : ''}
 ${SITE.naverVerification ? `<meta name="naver-site-verification" content="${SITE.naverVerification}">` : ''}
 ${SITE.adsenseClient ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${SITE.adsenseClient}" crossorigin="anonymous"></script>` : ''}
@@ -100,14 +104,16 @@ const write = (rel, content) => { const p = path.join(OUT, rel); fs.mkdirSync(pa
 // ── 글 페이지
 for (const p of posts) {
   const url = `${SITE.url}/posts/${p.slug}/`;
-  const related = posts.filter(o => o.slug !== p.slug).slice(0, 3);
+  // 같은 분류 글을 먼저, 모자라면 최신 글로 채움
+  const others = posts.filter(o => o.slug !== p.slug);
+  const related = [...others.filter(o => o.category && o.category === p.category), ...others.filter(o => !o.category || o.category !== p.category)].slice(0, 3);
   const cta = SITE.kmongUrl ? `
 <aside class="cta">
   <p class="cta-title">랜딩페이지, 직접 만들 시간이 없다면</p>
   <p>기획부터 반응형 제작, 상담 폼 연동, 배포까지 대신 해드립니다. 크몽 안전결제로 진행돼요.</p>
   <a class="btn" href="${SITE.kmongUrl}" target="_blank" rel="noopener">크몽에서 서비스 보기 →</a>
 </aside>` : '';
-  const jsonld = { '@context': 'https://schema.org', '@type': 'Article', headline: p.title, description: p.description, datePublished: p.date, dateModified: p.updated || p.date, mainEntityOfPage: url, publisher: { '@type': 'Organization', name: SITE.title } };
+  const jsonld = { '@context': 'https://schema.org', '@type': 'Article', headline: p.title, description: p.description, datePublished: p.date, dateModified: p.updated || p.date, mainEntityOfPage: url, image: `${SITE.url}/og.png`, publisher: { '@type': 'Organization', name: SITE.title } };
   const body = `
 <article class="post">
   <p class="meta">${esc(p.category || '')} · ${fmtDate(p.date)}${p.updated ? ` (수정 ${fmtDate(p.updated)})` : ''} · ${p.minutes}분 읽기</p>
@@ -159,8 +165,9 @@ for (const [slug, [title, body]] of Object.entries(pages)) {
 write('404.html', layout({ title: '페이지를 찾을 수 없어요', description: SITE.description, canonical: `${SITE.url}/404.html`, body: `<section class="hero"><h1>페이지를 찾을 수 없어요</h1><p><a href="/">글 목록으로 돌아가기</a></p></section>` }));
 
 // ── sitemap, robots, rss
-const urls = [`${SITE.url}/`, ...posts.map(p => `${SITE.url}/posts/${p.slug}/`), `${SITE.url}/about/`];
-write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `<url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
+const latest = posts.map(p => p.updated || p.date).sort().at(-1);
+const urls = [[`${SITE.url}/`, latest], ...posts.map(p => [`${SITE.url}/posts/${p.slug}/`, p.updated || p.date]), [`${SITE.url}/about/`]];
+write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(([u, d]) => `<url><loc>${u}</loc>${d ? `<lastmod>${d}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`);
 write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${SITE.url}/sitemap.xml\n`);
 const rfc822 = d => new Date(`${d}T09:00:00+09:00`).toUTCString();
 write('feed.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>${esc(SITE.title)}</title><link>${SITE.url}/</link><description>${esc(SITE.description)}</description><language>ko</language>\n${posts.map(p => `<item><title>${esc(p.title)}</title><link>${SITE.url}/posts/${p.slug}/</link><guid>${SITE.url}/posts/${p.slug}/</guid><pubDate>${rfc822(p.date)}</pubDate><description>${esc(p.description)}</description></item>`).join('\n')}\n</channel></rss>\n`);
