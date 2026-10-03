@@ -23,7 +23,8 @@ const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.join(ROOT, 'docs');
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const fmtDate = d => { const [y, m, day] = d.split('-'); return `${y}년 ${+m}월 ${+day}일`; };
+const toDay = d => (d instanceof Date ? d.toISOString().slice(0, 10) : String(d));
+const fmtDate = d => { const [y, m, day] = toDay(d).split('-'); return `${y}년 ${+m}월 ${+day}일`; };
 
 // 제목에 id를 붙여 목차 링크가 동작하게 함
 const slugify = t => t.toLowerCase().replace(/<[^>]+>/g, '').replace(/[^\p{L}\p{N}\s-]/gu, '').trim().replace(/\s+/g, '-');
@@ -88,7 +89,8 @@ const posts = fs.readdirSync(path.join(ROOT, 'posts'))
   .map(f => {
     const { data, content } = matter(fs.readFileSync(path.join(ROOT, 'posts', f), 'utf8'));
     const slug = f.replace(/\.md$/, '');
-    const date = data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date);
+    const date = toDay(data.date);
+    if (data.updated) data.updated = toDay(data.updated);
     const html = marked.parse(content);
     const toc = [...html.matchAll(/<h2 id="([^"]+)">(.+?)<\/h2>/g)].map(m => ({ id: m[1], text: m[2] }));
     const minutes = Math.max(1, Math.round(content.replace(/```[\s\S]*?```/g, '').length / 500));
